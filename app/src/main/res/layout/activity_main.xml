@@ -112,7 +112,7 @@
                 android:id="@+id/blowOut"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Blow Out" />
+                android:text="Extinguish" />
         </LinearLayout>
 
     </LinearLayout>
