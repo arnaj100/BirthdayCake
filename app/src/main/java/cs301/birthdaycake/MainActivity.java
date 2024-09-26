@@ -3,6 +3,7 @@ package cs301.birthdaycake;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         CakeView cakeView = findViewById(R.id.cakeview);
         CakeController cCont = new CakeController(cakeView);
+        cakeView.setOnTouchListener(cCont);
 
         Button blowOut = findViewById(R.id.blowOut);
         blowOut.setOnClickListener(cCont);
