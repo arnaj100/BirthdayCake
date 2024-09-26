@@ -161,7 +161,9 @@ public class CakeView extends SurfaceView {
         }
 
        drawCheckerboard(canvas);
-        if (cm.yLoc != 0.0)        drawBalloon(canvas, cm.xLoc, cm.yLoc);
+        if (cm.yLoc != 0.0){
+            drawBalloon(canvas, cm.xLoc, cm.yLoc);
+        }
 
 
         //Where touch occured

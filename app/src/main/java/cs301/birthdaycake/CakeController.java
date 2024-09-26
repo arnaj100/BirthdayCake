@@ -55,8 +55,8 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
         cm.xCord = String.valueOf(motionEvent.getX());
         cm.yCord = String.valueOf(motionEvent.getY());
 
-        cm.balloonX = xLoc;
-        cm.balloonY = yLoc;
+        cm.xLoc = xLoc;
+        cm.yLoc = yLoc;
 
         cv.invalidate();
 
