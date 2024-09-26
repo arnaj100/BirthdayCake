@@ -160,7 +160,7 @@ public class CakeView extends SurfaceView {
         for(int i = 1; i <= cm.numCandles; i++) {
             drawCandle(canvas, cakeLeft + ((cakeWidth / (cm.numCandles + 1)) * i) - candleWidth / 2, cakeTop);
         }
-        if (cm.balloonY != 0.0)        drawBalloon(canvas, cm.balloonX, cm.balloonY);
+        if (cm.yLoc != 0.0)        drawBalloon(canvas, cm.xLoc, cm.yLoc);
 
 
         //Where touch occured
