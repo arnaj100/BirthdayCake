@@ -7,4 +7,6 @@ public class CakeModel {
     public boolean hasCandles = true;
     public float xLoc;
     public float yLoc;
+    public String xCord;
+    public String yCord;
 }

@@ -48,9 +48,20 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
-        cm.xLoc = motionEvent.getX();
-        cm.yLoc = motionEvent.getY();
+
+        //Find out where the touch occurred (x,y)
+        float xLoc = motionEvent.getX();  //display pixels
+        float yLoc = motionEvent.getY();  //display pixels
+        cm.xCord = String.valueOf(motionEvent.getX());
+        cm.yCord = String.valueOf(motionEvent.getY());
+
+        cm.balloonX = xLoc;
+        cm.balloonY = yLoc;
+
         cv.invalidate();
-        return false;
+
+        return true;
     }
+
+
 }
