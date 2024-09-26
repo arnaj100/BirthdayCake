@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
 
@@ -16,8 +17,11 @@ public class CakeView extends SurfaceView {
     Paint outerFlamePaint = new Paint();
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
+    Paint balloonPaint = new Paint();
 
     private CakeModel cm = new CakeModel();
+
+    Path path = new Path();
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -35,6 +39,7 @@ public class CakeView extends SurfaceView {
     public static final float wickWidth = 6.0f;
     public static final float outerFlameRadius = 30.0f;
     public static final float innerFlameRadius = 15.0f;
+    public static final float balloonRadius = 50.0f;
 
 
 
@@ -61,6 +66,8 @@ public class CakeView extends SurfaceView {
         innerFlamePaint.setStyle(Paint.Style.FILL);
         wickPaint.setColor(Color.BLACK);
         wickPaint.setStyle(Paint.Style.FILL);
+        balloonPaint.setColor(Color.BLUE);
+        balloonPaint.setStyle(Paint.Style.FILL);
 
         setBackgroundColor(Color.WHITE);  //better than black default
 
@@ -92,6 +99,27 @@ public class CakeView extends SurfaceView {
 
     }
 
+    /*
+     draws a ballon when the user touches the screen
+     */
+    public void drawBalloon(Canvas canvas, float x, float y){
+
+        float triHeight = (float)2 * balloonRadius;
+
+        path.reset();
+
+        // draw triangle to make it more balloonShaped
+        path.moveTo(x-(balloonRadius),y);
+        path.lineTo(x+(balloonRadius),y);
+        path.lineTo(x,y+triHeight);
+        //path.lineTo(x-(balloonRadius),y);
+        path.close();
+
+        canvas.drawCircle(x,y, balloonRadius, balloonPaint);
+        canvas.drawPath(path, balloonPaint);
+
+        invalidate();
+    }
     /**
      * onDraw is like "paint" in a regular Java program.  While a Canvas is
      * conceptually similar to a Graphics in javax.swing, the implementation has
@@ -128,6 +156,8 @@ public class CakeView extends SurfaceView {
         for(int i = 1; i <= cm.numCandles; i++) {
             drawCandle(canvas, cakeLeft + ((cakeWidth / (cm.numCandles + 1)) * i) - candleWidth / 2, cakeTop);
         }
+        if (cm.balloonY != 0.0)        drawBalloon(canvas, cm.balloonX, cm.balloonY);
+
     }//onDraw
 
     public CakeModel getCm() {
