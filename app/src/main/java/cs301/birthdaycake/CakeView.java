@@ -18,6 +18,8 @@ public class CakeView extends SurfaceView {
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
     Paint balloonPaint = new Paint();
+    Paint textPaint = new Paint();
+
 
     private CakeModel cm = new CakeModel();
 
@@ -34,7 +36,7 @@ public class CakeView extends SurfaceView {
     public static final float layerHeight = 200.0f;
     public static final float frostHeight = 50.0f;
     public static final float candleHeight = 300.0f;
-    public static final float candleWidth = 40.0f;
+    public static final float candleWidth = 60.0f;
     public static final float wickHeight = 30.0f;
     public static final float wickWidth = 6.0f;
     public static final float outerFlameRadius = 30.0f;
@@ -68,6 +70,8 @@ public class CakeView extends SurfaceView {
         wickPaint.setStyle(Paint.Style.FILL);
         balloonPaint.setColor(Color.BLUE);
         balloonPaint.setStyle(Paint.Style.FILL);
+        textPaint.setColor(0xFFFF0000);
+        textPaint.setTextSize(30);
 
         setBackgroundColor(Color.WHITE);  //better than black default
 
@@ -158,6 +162,9 @@ public class CakeView extends SurfaceView {
         }
         if (cm.balloonY != 0.0)        drawBalloon(canvas, cm.balloonX, cm.balloonY);
 
+
+        //Where touch occured
+        canvas.drawText(cm.xCord + ", " + cm.yCord, 1800, 800, textPaint);
     }//onDraw
 
     public CakeModel getCm() {

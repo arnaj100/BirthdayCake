@@ -52,6 +52,8 @@ public class CakeController implements View.OnTouchListener, View.OnClickListene
         //Find out where the touch occurred (x,y)
         float xLoc = motionEvent.getX();  //display pixels
         float yLoc = motionEvent.getY();  //display pixels
+        cm.xCord = String.valueOf(motionEvent.getX());
+        cm.yCord = String.valueOf(motionEvent.getY());
 
         cm.balloonX = xLoc;
         cm.balloonY = yLoc;
@@ -60,4 +62,6 @@ public class CakeController implements View.OnTouchListener, View.OnClickListene
 
         return true;
     }
+
+
 }
